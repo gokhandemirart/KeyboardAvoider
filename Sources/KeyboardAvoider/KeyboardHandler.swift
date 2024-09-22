@@ -129,7 +129,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         
         let targetFrame = _activeView.convert(_activeView.bounds, to: nil)
         let targetY = targetFrame.maxY
-        let containerY = UIScreen.main.bounds.height - keyboardHeight
+        let containerY = UIScreen.main.bounds.height - keyboardHeight - 100
         
         if containerY < targetY {
             DispatchQueue.main.async {
