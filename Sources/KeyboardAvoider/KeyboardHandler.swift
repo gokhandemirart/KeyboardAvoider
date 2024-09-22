@@ -130,15 +130,16 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         guard let _scrollview = scrollview else { return }
         
         let targetFrame = _activeView.convert(_activeView.bounds, to: nil)
-        let targetY = targetFrame.maxY + 30
+        let targetY = targetFrame.maxY + 30.0
         let containerY = UIScreen.main.bounds.height - keyboardHeight 
 
+        print(targetFrame)
         print(targetY)
         print(containerY)
         if containerY < targetY {
             DispatchQueue.main.async {
                 var newFrame = targetFrame
-                newFrame.origin.y -= self.spaceBetweenKeyboardAndInputField 
+                newFrame.origin.y += 100.0
                 _scrollview.scrollRectToVisible(newFrame, animated: true)
             }
         }
