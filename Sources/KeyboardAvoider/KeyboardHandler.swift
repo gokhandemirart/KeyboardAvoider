@@ -49,8 +49,8 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         
         keyboardWillShow.merge(with: keyboardWillHide)
             .sink {[weak self] height in
-                self?.keyboardHeight = height
-                self?.actualKeyboardHeight = height - 100
+                self?.keyboardHeight = height + 100.0
+                self?.actualKeyboardHeight = height - 100.0
         }
         .store(in: &subscriptions)
         
@@ -78,7 +78,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         guard originY >= screenHeight - actualKbHeight else {
             return
         }
-        keyboardHeight =  screenHeight - originY - 100
+        keyboardHeight =  screenHeight - originY + 100.0
     }
     
     public func gestureRecognizer(
@@ -131,7 +131,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         
         let targetFrame = _activeView.convert(_activeView.bounds, to: nil)
         let targetY = targetFrame.maxY + 30.0
-        let containerY = UIScreen.main.bounds.height - keyboardHeight 
+        let containerY = UIScreen.main.bounds.height - keyboardHeight + 100.0
 
         print(targetFrame)
         print(targetY)
