@@ -76,7 +76,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         guard originY >= screenHeight - actualKbHeight else {
             return
         }
-        keyboardHeight =  screenHeight - originY
+        keyboardHeight =  screenHeight - originY - 100
     }
     
     public func gestureRecognizer(
