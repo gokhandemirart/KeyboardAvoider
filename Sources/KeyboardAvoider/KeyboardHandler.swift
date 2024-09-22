@@ -16,7 +16,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
     @Published public var keyboardHeight:CGFloat = 0.0
   
     /// Space between keyboard and TextField or TextView
-    var spaceBetweenKeyboardAndInputField:CGFloat = 30.0
+    var spaceBetweenKeyboardAndInputField:CGFloat = 60.0
     
     var actualKeyboardHeight:CGFloat?
     
