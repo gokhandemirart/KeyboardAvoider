@@ -16,7 +16,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
     @Published public var keyboardHeight:CGFloat = 0.0
   
     /// Space between keyboard and TextField or TextView
-    var spaceBetweenKeyboardAndInputField:CGFloat = 0.0
+    var spaceBetweenKeyboardAndInputField:CGFloat = 20.0
     
     var actualKeyboardHeight:CGFloat?
     
@@ -26,7 +26,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
     override init() {
         super.init()
 
-        print("girdi")
+    
         panRecognizer = UIPanGestureRecognizer(
             target: self, action: #selector(handlePan(_:)))
         panRecognizer?.delegate = self
@@ -50,7 +50,7 @@ class KeyboardHandler:NSObject, ObservableObject, UIGestureRecognizerDelegate {
         keyboardWillShow.merge(with: keyboardWillHide)
             .sink {[weak self] height in
                 self?.keyboardHeight = height
-                self?.actualKeyboardHeight = height
+                self?.actualKeyboardHeight = height - 100
         }
         .store(in: &subscriptions)
         
